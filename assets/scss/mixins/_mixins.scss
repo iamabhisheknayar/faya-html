@@ -1,0 +1,133 @@
+@mixin px-rem($pxValue, $property: "font-size", $standard-size: 16) {
+  #{$property}: $pxValue/$standard-size + rem;
+}
+$base-size: 16;
+@function size($target, $context: $base-size) {
+  @return ($target / $context) * 1rem;
+}
+
+//   Media query
+@mixin min-max($resMin, $resMax) {
+  @media (min-width: $resMin+px) and (max-width: $resMax+px) {
+    @content;
+  }
+}
+@mixin max($res) {
+  @media (max-width: $res+px) {
+    @content;
+  }
+}
+@mixin min($res) {
+  @media (min-width: $res+px) {
+    @content;
+  }
+}
+// Clearfix
+
+// Box Shadow
+@mixin box-shadow($x, $y, $blur, $color) {
+  box-shadow: $x $y $blur $color;
+  -webkit-box-shadow: $x $y $blur $color;
+}
+
+// Transition Effect
+@mixin transition($property, $function, $time) {
+  transition: $property $function $time;
+  -o-transition: $property $function $time;
+  -webkit-transition: $property $function $time;
+}
+
+// Border Radius
+@mixin border-radius($radius) {
+  border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+@mixin transition-all($property, $function, $time) {
+  transition: $property $function $time;
+  -o-transition: $property $function $time;
+  -webkit-transition: $property $function $time;
+}
+
+// Transform Object
+@mixin transform($x, $y) {
+  transform: translate($x, $y);
+  -ms-transform: translate($x, $y);
+  -o-transform: translate($x, $y);
+  -webkit-transform: translate($x, $y);
+}
+
+@mixin transformY($y) {
+  transform: translateY($y);
+  -ms-transform: translateY($y);
+  -o-transform: translateY($y);
+  -webkit-transform: translateY($y);
+}
+
+@mixin transformX($x) {
+  transform: translateX($x);
+  -ms-transform: translateX($x);
+  -o-transform: translateX($x);
+  -webkit-transform: translateX($x);
+}
+
+@mixin rotate($degree) {
+  transform: rotate($degree);
+  -ms-transform: rotate($degree);
+  -o-transform: rotate($degree);
+  -webkit-transform: rotate($degree);
+}
+
+@mixin scale($x, $y) {
+  transform: scale($x, $y);
+  -ms-transform: scale($x, $y);
+  -o-transform: scale($x, $y);
+  -webkit-transform: scale($x, $y);
+}
+@mixin flexbox() {
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+  -moz-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+@mixin justify-content($justify) {
+  -webkit-justify-content: $justify;
+  -moz-justify-content: $justify;
+  -ms-justify-content: $justify;
+  justify-content: $justify;
+  -ms-flex-pack: $justify;
+}
+@mixin align-items($align) {
+  -webkit-align-items: $align;
+  -moz-align-items: $align;
+  -ms-align-items: $align;
+  align-items: $align;
+}
+@mixin flx($position) {
+  @if $position== "both" {
+    @include flexbox();
+    @include justify-content(center);
+    @include align-items(center);
+  } @else if $position== "top" {
+    @include align-items(flex-start);
+  } @else if $position== "bottom" {
+    @include align-items(flex-end);
+  } @else if $position== "vcenter" {
+    @include align-items(center);
+  } @else if $position== "right" {
+    @include justify-content(flex-end);
+  } @else if $position== "left" {
+    @include justify-content(flex-start);
+  } @else if $position== "hcenter" {
+    @include justify-content(center);
+  } @else if $position== "eqaul-space" {
+    @include justify-content(space-between);
+  }
+}

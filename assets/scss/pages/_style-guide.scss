@@ -1,0 +1,142 @@
+// deafult Color
+$primary-color: #425d8e !default; // green
+$secondary-color: #6085bf !default; // red
+$quinary-color: #272727 !default; // Grey
+// Custom-color
+$dark-bg: #20222e !default;
+$dark-gray: #323241 !default;
+$light-bg: #f0f6ff !default;
+$text-color: #494949 !default;
+$title-color: #1d1d1d !default;
+$title-blue: #012979 !default;
+$hover: $primary-color;
+$border-color: #e6e6e6 !default;
+$text-alt: #282828 !default;
+$text-off: #281107 !default;
+$white: #fff !default;
+$black: #000 !default;
+$red: #c60c02 !default;
+
+$d-ico: "deafult-icons" !default;
+
+.d-flx {
+  @include flexbox();
+  &.no-wrap {
+    @include flex-wrap(nowrap);
+  }
+}
+.flx-both {
+  @include flx(both);
+}
+.flx-top {
+  @include flx(top);
+}
+.flx-bottom {
+  @include flx(bottom);
+}
+.flx-vcenter {
+  @include flx(vcenter);
+}
+.flx-left {
+  @include flx(left);
+}
+.flx-right {
+  @include flx(right);
+}
+.flx-hcenter {
+  @include flx(hcenter);
+}
+.flx-equal-space {
+  @include flx(eqaul-space);
+}
+
+.d-blk {
+  display: block;
+}
+.mr-auto {
+  margin-right: auto;
+}
+.ml-auto {
+  margin-left: auto;
+}
+.h100 {
+  height: 100%;
+}
+.w100 {
+  width: 100%;
+}
+.tel {
+  cursor: default;
+}
+.no-pad {
+  padding: 0 !important;
+}
+
+.default {
+  padding: 0 !important;
+  margin: 0 !important;
+  list-style: none !important;
+  li {
+    list-style-type: none;
+    &:before,
+    &:after {
+      display: none;
+    }
+  }
+}
+
+#back-to-top {
+  background-color: lighten($primary-color, 10%);
+  bottom: 0;
+  color: $white;
+  display: inline-block;
+  height: 36px;
+  opacity: 0;
+  overflow: hidden;
+  position: fixed;
+  right: 15px;
+  text-align: center;
+  @include transition(all, ease, 0.5s);
+  @include transformY(20px);
+  width: 36px;
+  z-index: 99;
+  &.visible {
+    opacity: 1;
+    @include transformY(0);
+  }
+  &:before,
+  &:after {
+    border: solid $white;
+    border-width: 2px 0 0 2px;
+    bottom: 8px;
+    content: "";
+    display: inline-block;
+    height: 14px;
+    left: 10px;
+    position: absolute;
+    @include rotate(45deg);
+    @include transition(all, ease, 0.1s);
+    width: 14px;
+  }
+  &:after {
+    bottom: -20px;
+  }
+  &:hover {
+    background-color: $secondary-color;
+    text-decoration: none;
+    &:before {
+      border-color: $white;
+      bottom: 30px;
+    }
+    &:after {
+      border-color: $white;
+      bottom: 8px;
+    }
+  }
+  @include max(1199) {
+    display: none;
+  }
+}
+.p-60 {
+  padding: 60px 0;
+}
